@@ -52,6 +52,7 @@
     enable = true;
     pulse.enable = true;
   };
+  # TODO: cannot start fcitx5 on sway
   # TODO: settings
   i18n.inputMethod = {
     enable = true;
