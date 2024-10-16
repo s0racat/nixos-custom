@@ -6,21 +6,22 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
   };
-  users.users.nixos.shell = pkgs.zsh;
-  fonts.packages = [ pkgs.ipaexfont ];
+  fonts.enableDefaultPackages = false;
+  fonts.packages = with pkgs;[ ipaexfont roboto-mono];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
       serif = [ "IPAexMincho" ];
       sansSerif = [ "IPAexGothic" ];
+      monospace = ["Roboto Mono"];
     };
   };
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     keepassxc
-    lxqt.pcmanfm-qt
-    lxqt.pavucontrol-qt
-    wpa_supplicant_gui
+  ];
+  environment.xfce.excludePackages = with pkgs.xfce; [
+    parole
   ];
 
   services.xserver = {
@@ -28,9 +29,11 @@
     desktopManager = {
       xterm.enable = false;
       xfce.enable = true;
+      xfce.enableScreensaver = false;
     };
-    displayManager.defaultSession = "xfce";
   };
+  services.displayManager.defaultSession = "xfce";
+
   # remove mbrola
   services.speechd.enable = false;
   boot.plymouth.enable = lib.mkImageMediaOverride false;
@@ -66,7 +69,7 @@
     };
   };
   time.timeZone = "Asia/Tokyo";
-  #networking.networkmanager.enable = lib.mkImageMediaOverride true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = lib.mkImageMediaOverride true; # Easiest to use and most distros use this by default.
   programs.firefox = {
     enable = true;
     policies = {
@@ -175,4 +178,6 @@
       ];
     };
   };
+  users.users.nixos.shell = pkgs.zsh;
+  home-manager.users.nixos = import ./home.nix;
 }
