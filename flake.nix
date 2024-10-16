@@ -8,20 +8,30 @@
     };
   };
   outputs =
-    { self, nixpkgs }@inputs:
+    { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
       nixosConfigurations = {
         exampleIso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           specialArgs = {
             inherit inputs;
           };
           modules = [
             (
-              { pkgs, modulesPath, ... }:
+              {
+                pkgs,
+                modulesPath,
+                inputs,
+                ...
+              }:
               {
                 imports = [
-                  (modulesPath + "/installer/cd-dvd/installation-cd-base.nix")
+                  (modulesPath + "/installer/cd-dvd/installation-cd-graphical-base.nix")
+                  inputs.home-manager.nixosModules.home-manager
                   (./configuration.nix)
                 ];
               }
