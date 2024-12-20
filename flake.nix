@@ -13,7 +13,6 @@
   };
   outputs =
     {
-      self,
       nixpkgs,
       treefmt-nix,
       ...
