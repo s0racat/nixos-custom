@@ -3,7 +3,8 @@
 ## How to Build
 
 ```bash
-nix build .#nixosConfigurations.exampleIso.config.system.build.isoImage
+nix build .#nixosConfigurations.<name>.config.system.build.isoImage
+# Example: nix build .#nixosConfigurations.xfce.config.system.build.isoImage
 ```
 
 ## Reference
