@@ -33,14 +33,20 @@ in
             home-manager = {
               useGlobalPkgs = true;
             };
-            isoImage.squashfsCompression = "xz -T0 '-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' '1M'";
           }
           (
-            { modulesPath, ... }:
+            {
+              pkgs,
+              modulesPath,
+              lib,
+              ...
+            }:
             {
               imports = [
                 (modulesPath + "/installer/cd-dvd/installation-cd-graphical-base.nix")
               ];
+              isoImage.squashfsCompression =
+                "xz -comp xz -b 1M -Xdict-size 1M" + lib.optionalString pkgs.stdenv.hostPlatform.isx86 " -Xbcj x86";
             }
           )
         ] ++ extraModules;
