@@ -7,13 +7,16 @@
     syntaxHighlighting.enable = true;
   };
   fonts.enableDefaultPackages = false;
-  fonts.packages = with pkgs;[ ipaexfont roboto-mono];
+  fonts.packages = with pkgs; [
+    ipaexfont
+    roboto-mono
+  ];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
       serif = [ "IPAexMincho" ];
       sansSerif = [ "IPAexGothic" ];
-      monospace = ["Roboto Mono"];
+      monospace = [ "Roboto Mono" ];
     };
   };
   environment.systemPackages = with pkgs; [
@@ -27,10 +30,10 @@
   services.xserver = {
     enable = true;
     desktopManager = {
-      xterm.enable = false;
       xfce.enable = true;
       xfce.enableScreensaver = false;
     };
+    excludePackages = [ pkgs.xterm ];
   };
   services.displayManager.defaultSession = "xfce";
 
@@ -118,7 +121,7 @@
       "browser.urlbar.showSearchSuggestionsFirst" = false;
       # Enable Tab Unloading feature
       "browser.tabs.unloadOnLowMemory" = true;
-      # Enable fractional scaling via fractional-scale-v1 protocol 
+      # Enable fractional scaling via fractional-scale-v1 protocol
       # "widget.wayland.fractional-scale.enabled" = true;
       # Bring back old Clear All History dialog
       "privacy.sanitize.useOldClearHistoryDialog" = true;
