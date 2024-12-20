@@ -1,80 +1,12 @@
-{ pkgs, lib, ... }:
-
 {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-  };
-  fonts.enableDefaultPackages = false;
-  fonts.packages = with pkgs; [
-    ipaexfont
-    roboto-mono
-  ];
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      serif = [ "IPAexMincho" ];
-      sansSerif = [ "IPAexGothic" ];
-      monospace = [ "Roboto Mono" ];
-    };
-  };
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    keepassxc
-  ];
-  environment.xfce.excludePackages = with pkgs.xfce; [
-    parole
-  ];
-
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xfce.enable = true;
-      xfce.enableScreensaver = false;
-    };
-    excludePackages = [ pkgs.xterm ];
-  };
-  services.displayManager.defaultSession = "xfce";
-
-  # remove mbrola
-  services.speechd.enable = false;
-  boot.plymouth.enable = lib.mkImageMediaOverride false;
-  # services.xserver.enable = lib.mkImageMediaOverride false;
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  #   extraPackages = with pkgs; [
-  #     foot
-  #     dmenu
-  #     wmenu
-  #     wl-clipboard
-  #   ];
-  # };
-
-  # pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-  # TODO: cannot start fcitx5 on sway
-  # TODO: settings
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      addons = with pkgs; [
-        fcitx5-skk
-        fcitx5-gtk
-      ];
-      waylandFrontend = true;
-    };
-  };
-  time.timeZone = "Asia/Tokyo";
-  networking.networkmanager.enable = lib.mkImageMediaOverride true; # Easiest to use and most distros use this by default.
   programs.firefox = {
     enable = true;
+    languagePacks = [ "ja" ];
+    autoConfig = ''
+      // Use LANG environment variable to choose locale
+      // https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/blob/72e20d2777ce1f68e57dbffbb16026be43411b82/PKGBUILD#L210-211
+      pref("intl.locale.requested", "");
+    '';
     policies = {
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
@@ -155,32 +87,4 @@
       "application/x-extension-xht" = "firefox.desktop";
     };
   };
-  services.gvfs.enable = true;
-  services.tlp = {
-    enable = true;
-  };
-  services.logind.powerKey = "suspend";
-  boot.consoleLogLevel = 3;
-  boot.tmp.useTmpfs = true;
-  services.udisks2 = {
-    enable = true;
-    settings = {
-      "tcrypt.conf" = { };
-    };
-  };
-  services.blueman.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-  };
-  users.users.nixos.shell = pkgs.zsh;
-  home-manager.users.nixos = import ./home.nix;
 }
