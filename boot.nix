@@ -3,5 +3,5 @@
   boot.consoleLogLevel = 3;
   boot.tmp.useTmpfs = true;
   boot.plymouth.enable = lib.mkImageMediaOverride false;
-  boot.initrd.supportedFilesystems.exfat = true;
+  boot.initrd.kernelModules = [ "exfat" ];
 }
