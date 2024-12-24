@@ -10,6 +10,8 @@
     "${self}/packages.nix"
     "${self}/services/pipewire.nix"
     "${self}/programs/firefox.nix"
+    "${self}/programs/htop.nix"
+    "${self}/programs/bat.nix"
     "${self}/programs/zsh.nix"
     "${self}/systemd.nix"
     "${self}/services/tlp.nix"
