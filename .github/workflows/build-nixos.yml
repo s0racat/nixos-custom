@@ -18,7 +18,7 @@ on:
     inputs:
       profile:
         description: "profile"
-        required: true
+        #required: true
         default: "xfce"
         type: string
 
