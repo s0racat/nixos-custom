@@ -3,13 +3,7 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-
-  };
-  home-manager.users.nixos = {
-    programs.zsh = {
-      enable = true;
-
-      shellAliases = {
+shellAliases = {
         ll = "eza -F -alg --time-style=long-iso";
         ls = "eza -F --time-style=long-iso";
         l = "ls";
@@ -28,6 +22,13 @@
         md = "mkdir";
         rm = "rm -vi";
       };
+
+  };
+  home-manager.users.nixos = {
+    programs.zsh = {
+      enable = true;
+
+      
     };
   };
 }
