@@ -37,7 +37,6 @@ in
           (
             {
               pkgs,
-              modulesPath,
               lib,
               ...
             }:
