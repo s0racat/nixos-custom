@@ -7,6 +7,7 @@
   };
   home-manager.users.nixos = {
     programs.zsh = {
+      enable = true;
 
       shellAliases = {
         ll = "eza -F -alg --time-style=long-iso";
