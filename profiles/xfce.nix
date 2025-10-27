@@ -1,6 +1,7 @@
-{ self, pkgs, ... }:
+{ self, pkgs,modulesPath, ... }:
 {
   imports = [
+                (modulesPath + "/installer/cd-dvd/installation-cd-graphical-base.nix")
     "${self}/services/bluetooth.nix"
     "${self}/boot.nix"
     "${self}/desktop/font.nix"
@@ -19,6 +20,7 @@
     "${self}/services/gvfs.nix"
     "${self}/user-nixos.nix"
   ];
+environment.systemPackages =with pkgs;[keepassxc];
   environment.xfce.excludePackages = with pkgs.xfce; [
     parole
   ];
