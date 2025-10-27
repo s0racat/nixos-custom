@@ -42,9 +42,6 @@ in
               ...
             }:
             {
-              imports = [
-                (modulesPath + "/installer/cd-dvd/installation-cd-base.nix")
-              ];
               isoImage.squashfsCompression =
                 "xz -comp xz -b 1M -Xdict-size 1M" + lib.optionalString pkgs.stdenv.hostPlatform.isx86 " -Xbcj x86";
             }
