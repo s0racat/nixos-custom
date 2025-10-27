@@ -19,5 +19,6 @@
   time.timeZone = "Asia/Tokyo";
 
   networking.networkmanager.enable = lib.mkImageMediaOverride true; # Easiest to use and most distros use this by default.
+  networking.wireless.enable = lib.mkImageMediaOverride false;
 
 }

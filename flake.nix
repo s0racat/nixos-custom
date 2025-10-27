@@ -49,7 +49,7 @@
           name = "xfce";
           stateVersion = "25.05";
         })
- (util.mkSystem {
+        (util.mkSystem {
           name = "console";
           stateVersion = "25.05";
         })

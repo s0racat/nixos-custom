@@ -49,7 +49,8 @@ in
                 "xz -comp xz -b 1M -Xdict-size 1M" + lib.optionalString pkgs.stdenv.hostPlatform.isx86 " -Xbcj x86";
             }
           )
-        ] ++ extraModules;
+        ]
+        ++ extraModules;
       };
     };
 }

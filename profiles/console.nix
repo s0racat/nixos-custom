@@ -12,5 +12,5 @@
     "${self}/services/tlp.nix"
     "${self}/user-nixos.nix"
   ];
- 
+
 }
