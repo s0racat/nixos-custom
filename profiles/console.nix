@@ -13,10 +13,5 @@
     "${self}/services/tlp.nix"
     "${self}/user-nixos.nix"
   ];
-    home-manager.users.nixos = {
-        programs.zsh.initExtra = ''
-
-        '';
-    };
 
 }
