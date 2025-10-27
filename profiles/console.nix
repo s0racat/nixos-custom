@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 {
   imports = [
     "${self}/boot.nix"
