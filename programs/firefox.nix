@@ -34,7 +34,7 @@
           "toolkit.telemetry.enabled" = false;
           "app.shield.optoutstudies.enabled" = false;
           "datareporting.healthreport.uploadEnabled" = false;
-          "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
+          "media.ffmpeg.vaapi.enabled" = true;
           # disable av1 by default
           "media.av1.enabled" = false;
           # https://wiki.mozilla.org/Media/block-autoplay
