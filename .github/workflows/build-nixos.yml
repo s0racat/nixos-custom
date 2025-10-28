@@ -77,6 +77,7 @@ jobs:
 
       - name: Split if >2GB
         run: |
+          unzip iso.zip
           FILE=*.iso
           MAX=$((2 * 1024 * 1024 * 1024))
           SIZE=$(stat -c%s "$FILE")
