@@ -91,6 +91,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          body: "profile: ${{ inputs.profile }}"
           tag_name: ${{ github.run_id }}
           name: ${{ steps.date.outputs.date }}
           draft: false
