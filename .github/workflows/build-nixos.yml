@@ -78,8 +78,7 @@ jobs:
       - name: Split if >2GB
         run: |
           ls
-          unzip iso.zip
-          FILE=*.iso
+          FILE=$(ls ./*.iso | head -n1)
           MAX=$((2 * 1024 * 1024 * 1024))
           SIZE=$(stat -c%s "$FILE")
           if [ "$SIZE" -gt "$MAX" ]; then
