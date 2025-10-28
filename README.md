@@ -10,3 +10,13 @@ nix build .#nixosConfigurations.<name>.config.system.build.isoImage
 ## Reference
 
 https://nixos.wiki/wiki/Creating_a_NixOS_live_CD
+
+
+## integrate split files to .iso
+
+```cmd
+copy /b nixos-*.iso.part* nixos.iso
+```
+
+```bash
+cat nixos-*.iso.part* > nixos.iso
