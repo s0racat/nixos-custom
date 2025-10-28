@@ -75,6 +75,16 @@ jobs:
         with:
           name: iso
 
+      - name: Split if >2GB
+        run: |
+          FILE=*.iso
+          MAX=$((2 * 1024 * 1024 * 1024))
+          SIZE=$(stat -c%s "$FILE")
+          if [ "$SIZE" -gt "$MAX" ]; then
+            split -b 1900m "$FILE" "$FILE.part_"
+            rm "$FILE"
+          fi
+        
       - name: Create release
         uses: softprops/action-gh-release@v2
         env:
@@ -85,4 +95,4 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            nixos-*.iso
+            nixos-*.iso*
