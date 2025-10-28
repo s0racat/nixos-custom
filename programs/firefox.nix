@@ -21,24 +21,24 @@
       SearchEngines.Default = "DuckDuckGo";
     };
     preferences = {
-                     "dom.security.https_only_mode" = true;
-          # Turn off disk cache
-          "browser.cache.disk.enable" = false;
-          "browser.startup.homepage_override.mstone" = "ignore";
-          # Disable Sponsored shortcuts
-          "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-          # Do not open "Firefox Privacy Policy" tab in first launch
-          "datareporting.policy.firstRunURL" = "";
-          "privacy.trackingprotection.enabled" = true;          
-# Disable telemetry
-          "toolkit.telemetry.enabled" = false;
-          "app.shield.optoutstudies.enabled" = false;
-          "datareporting.healthreport.uploadEnabled" = false;
-          "media.ffmpeg.vaapi.enabled" = true;
-          # disable av1 by default
-          "media.av1.enabled" = false;
-          # https://wiki.mozilla.org/Media/block-autoplay
-          "media.autoplay.blocking_policy" = 2;
+      "dom.security.https_only_mode" = true;
+      # Turn off disk cache
+      "browser.cache.disk.enable" = false;
+      "browser.startup.homepage_override.mstone" = "ignore";
+      # Disable Sponsored shortcuts
+      "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+      # Do not open "Firefox Privacy Policy" tab in first launch
+      "datareporting.policy.firstRunURL" = "";
+      "privacy.trackingprotection.enabled" = true;
+      # Disable telemetry
+      "toolkit.telemetry.enabled" = false;
+      "app.shield.optoutstudies.enabled" = false;
+      "datareporting.healthreport.uploadEnabled" = false;
+      "media.ffmpeg.vaapi.enabled" = true;
+      # disable av1 by default
+      "media.av1.enabled" = false;
+      # https://wiki.mozilla.org/Media/block-autoplay
+      "media.autoplay.blocking_policy" = 2;
     };
   };
   xdg.mime = {

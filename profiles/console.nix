@@ -1,7 +1,7 @@
-{ self, modulesPath,... }:
+{ self, modulesPath, ... }:
 {
   imports = [
-                (modulesPath + "/installer/cd-dvd/installation-cd-base.nix")
+    (modulesPath + "/installer/cd-dvd/installation-cd-base.nix")
     "${self}/boot.nix"
     "${self}/misc.nix"
     "${self}/nix.nix"
