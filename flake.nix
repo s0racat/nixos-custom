@@ -47,11 +47,11 @@
       nixosConfigurations = builtins.listToAttrs [
         (util.mkSystem {
           name = "xfce";
-          stateVersion = "25.05";
+          stateVersion = "25.11";
         })
         (util.mkSystem {
           name = "console";
-          stateVersion = "25.05";
+          stateVersion = "25.11";
         })
       ];
     };
