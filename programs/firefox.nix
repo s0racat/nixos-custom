@@ -69,7 +69,7 @@
           # set homepage to about:home
           # "browser.startup.homepage" = "about:home";
           # force enable vaapi
-          "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
+          "media.ffmpeg.vaapi.enabled" = true;
           # disable av1 by default
           "media.av1.enabled" = false;
           # https://wiki.mozilla.org/Media/block-autoplay
